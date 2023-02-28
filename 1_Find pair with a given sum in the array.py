@@ -18,7 +18,28 @@ def pair_sum_2(A, target_sum): #O(N) sc = O(N)
         set_.add(A[i])
     return count
 
+def pair_sum_3(A, target_sum): #O(nlogn) #(1)
+    A.sort()
+    n = len(A)
+    left = 0
+    right = n-1
+    count = 0
+    while(left < right):
+        current_sum = A[left] + A[right]
+        if current_sum == target_sum:
+            count +=1
+            left +=1
+            right -=1
+        elif current_sum > target_sum:
+            right -= 1
+        else:
+            left +=1
+    return count
+
+
+
+
 
 A = [1, 5, -1,3,3 , 7, 10]
-print(pair_sum_2(A, 6))
+print(pair_sum_3(A, 6))
 
